@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DANH SÁCH HÀNG HÓA</title>
+</head>
+<body>
+<div class="container">
+    {% for message in messages %}
+              <div class="alert alert-{% if message.level_tag == 'error' %}danger{% else %}{{ message.level_tag }}{% endif %}" role="alert">
+                {{ message }}
+              </div>
+            {% endfor %}
+  <h1><em>DANH SÁCH HÀNG HÓA</em></h1>
+  <ul>
+    {% for item in hanghoaa %}
+    <li>
+      <h2>Tên của sản phẩm là: {{ item.HangHoa.Ten}}</h2>
+      <h3>Đơn vị tính của sản phẩm là: {{ item.HangHoa.DonViTinh}}</h3>
+      <h3>Tồn kho: {{item.SoLuong}}</h3>
+      <a href="{% url 'suahanghoa' idhanghoa=item.HangHoa.id %}">Xem hàng hóa</a>
+    </li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
